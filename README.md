@@ -1,19 +1,3 @@
-> **Author:** aru | **Category:** Forensics | **File:** `web_attack.pcap`
- 
----
- 
-## 📋 Table of Contents / Содержание
- 
-1. [Attacker's IP / IP атакующего](#1-attacker-ip)
-2. [Victim's IP / IP жертвы](#2-victim-ip)
-3. [User-Agent](#3-user-agent)
-4. [Vulnerability / Уязвимость](#4-vulnerability)
-5. [Hostname / Имя хоста](#5-hostname)
-6. [Files Obtained / Полученные файлы](#6-files-obtained)
-7. [Flag / Флаг](#7-flag)
-8. [Attack Timeline / Хронология атаки](#attack-timeline)
-9. [Commands Used / Использованные команды](#commands-used)
----
  
 ## 1. Attacker IP
  

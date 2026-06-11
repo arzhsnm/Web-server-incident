@@ -1,3 +1,6 @@
+Платформа: ctf.rteam.kz
+Web server incident
+
  
 ## 1. Attacker IP
  

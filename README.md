@@ -1,7 +1,7 @@
 Платформа: ctf.rteam.kz
 Web server incident
-
- 
+md5sum web_attack.pcap 412219d4a56990402834852dad7627af  
+sha256sum web_attack.pcap ab38278327dd53c9874466c55e425486e826df73e34273884984a94664de90ae 
 ## 1. Attacker IP
  
 **🇬🇧 What is the attacker's IP address?**
@@ -70,8 +70,8 @@ tshark -r web_attack.pcap -Y "http.request" -T fields -e ip.src -e http.user_age
 # 192.168.100.1  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ...Chrome/87...
 ```
  
-> ⚠️ The Linux/Firefox UA is the attacker's (Kali Linux). The Chrome/Windows UA is background traffic.
-> ⚠️ Linux/Firefox — UA атакующего (Kali Linux). Chrome/Windows — фоновый трафик.
+> The Linux/Firefox UA is the attacker's (Kali Linux). The Chrome/Windows UA is background traffic.
+> Linux/Firefox — UA атакующего (Kali Linux). Chrome/Windows — фоновый трафик.
  
 ---
  
@@ -239,45 +239,7 @@ strings web_attack.pcap | grep -iE "flag\{|CTF\{|HTB\{|THM\{"
 ```
  
 ---
- 
-## Commands Used
- 
-**Использованные команды**
- 
-```bash
-# 1. Basic traffic overview / Базовый обзор
-tcpdump -r web_attack.pcap | head -50
- 
-# 2. Find all IPs / Все IP адреса
-tshark -r web_attack.pcap -T fields -e ip.src -e ip.dst | sort | uniq -c | sort -rn | head -20
- 
-# 3. HTTP requests count per IP / Запросы по IP
-tshark -r web_attack.pcap -Y "http.request" -T fields -e ip.src | sort | uniq -c | sort -rn
- 
-# 4. User-Agents
-tshark -r web_attack.pcap -Y "http.request" -T fields -e ip.src -e http.user_agent | sort -u
- 
-# 5. All URIs / Все URI
-tshark -r web_attack.pcap -Y "http.request" -T fields -e ip.src -e http.request.method -e http.request.uri | sort -u
- 
-# 6. Suspicious patterns / Подозрительные паттерны
-tshark -r web_attack.pcap -Y "http.request" -T fields -e http.request.uri | grep -iE "\.\.\/|etc\/passwd|cmd=|exec|shell|eval"
- 
-# 7. POST data / POST данные
-tshark -r web_attack.pcap -Y "http.request.method==POST" -T fields -e http.request.uri -e http.file_data
- 
-# 8. Hostname / Имя хоста
-tshark -r web_attack.pcap -Y "http.request" -T fields -e http.host | sort -u
- 
-# 9. Successful requests (200 OK) / Успешные запросы
-tshark -r web_attack.pcap -Y "http.response.code==200" -T fields -e http.request.uri
- 
-# 10. Flag search / Поиск флага
-strings web_attack.pcap | grep -iE "flag\{|CTF\{|HTB\{|THM\{"
-```
- 
----
- 
+
 ## Summary / Итог
  
 | # | Question (EN) | Вопрос (RU) | Answer / Ответ |
@@ -291,7 +253,5 @@ strings web_attack.pcap | grep -iE "flag\{|CTF\{|HTB\{|THM\{"
 | 7 | Flag | Флаг | `flag{f1le_up1o4d_1nc1den7}` |
  
 ---
- 
-*Report generated from PCAP analysis using tshark/tcpdump on Kali Linux*
-*Отчёт составлен по результатам анализа PCAP с помощью tshark/tcpdump на Kali Linux*
+
  
